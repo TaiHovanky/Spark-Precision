@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import VariableCard from './components/VariableCard'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      variables: []
+    }
+  }
+
   componentDidMount() {
-    let now = new Date().valueOf();
-    console.log('now', now);
-    axios.get(`http://things.ubidots.com/api/v1.6/devices/noth-spill/level_ft/values/?token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ&format=json`)
-      .then(response => {
-        console.log('response', response);
-      });
+    var url = 'http://things.ubidots.com/api/v1.6/datasources/58dd763b76254263fe29d596/variables/?token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ&format=json'
+    axios.get(url)
+    .then(response => {
+      console.log('response variables', response);
+      this.setState({
+        variables: response.data.results
+      }, ()=> {
+        console.log('state set', this.state)
+      })
+    });
   }
 
   render() {
@@ -21,6 +33,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {this.state.variables.map(variable => {
+          return <VariableCard 
+          variable={variable}
+          key={variable.label} />
+        })}
       </div>
     );
   }
