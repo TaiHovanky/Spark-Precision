@@ -17,9 +17,11 @@ class VariableCard extends Component{
       time = new Date(time).toLocaleString();
     }
     return (
-      <section>
-        {this.props.variable && <h3>{this.props.variable.name}: </h3>}
-        {this.props.variable && <h1>{this.props.variable.last_value.value}</h1>}
+      <section className='variableCard'>
+        <header className='variableName'>
+          {this.props.variable && <h3>{this.props.variable.name}: </h3>}
+          {this.props.variable && <h1>{this.props.variable.last_value.value}</h1>}
+        </header>
         <p>Last Active: </p>
         <h4>{time}</h4>
       </section>

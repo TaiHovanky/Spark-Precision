@@ -31,13 +31,15 @@ class App extends Component {
           <h2>Spark Precision</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Device name: noth-spill
         </p>
+        <div className='container'>
         {this.state.variables.map(variable => {
           return <VariableCard 
           variable={variable}
           key={variable.label} />
         })}
+        </div>
       </div>
     );
   }
