@@ -29,8 +29,6 @@
 }
 
 .variableCard {
-  /*display: block;*/
-  /*border: 1px solid black;*/
   box-shadow: 2px 2px 10px #CCCCCC;
   text-align: center;
   width: 40%;
@@ -45,10 +43,9 @@
   color: #EDEDED;
 }
 
-/*@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/
+.valuesTable {
+  margin-left: 25%;
+}
 
 @media all and (max-width: 750px) {
   .container {
