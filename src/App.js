@@ -18,27 +18,27 @@ class App extends Component {
       console.log('response variables', response);
       this.setState({
         variables: response.data.results
-      }, ()=> {
-        console.log('state set', this.state)
       })
     });
   }
 
   render() {
+
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Spark Precision</h2>
+          <h2>Spark Precise Innovation</h2>
         </div>
         <p className="App-intro">
           Device name: noth-spill
         </p>
         <div className='container'>
-        {this.state.variables.map(variable => {
-          return <VariableCard 
-          variable={variable}
-          key={variable.label} />
-        })}
+          {this.state.variables.map(variable => {
+            return <VariableCard 
+            variable={variable}
+            key={variable.label} />
+          })}
+          
         </div>
       </div>
     );
