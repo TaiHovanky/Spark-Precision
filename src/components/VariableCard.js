@@ -27,7 +27,7 @@ class VariableCard extends Component{
       <section className='variableCard'>
         <header className='variableName' onClick={this.displayDetails.bind(this)}>
           {this.props.variable && <h3>{this.props.variable.name}: </h3>}
-          {this.props.variable && <h1>{this.props.variable.last_value.value}</h1>}
+          {this.props.variable && <h1>{this.props.variable.last_value.value} {this.props.variable.unit}</h1>}
         </header>
         <p>Last Active: </p>
         <h4>{time}</h4>

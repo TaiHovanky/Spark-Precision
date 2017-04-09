@@ -4,6 +4,18 @@
   font-weight: 300;
 }
 
+#devicesLabel {
+  margin-left: 4%;
+}
+
+.links {
+  margin: 2% 4%;
+}
+
+a {
+  text-decoration: none;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -55,6 +67,10 @@
 .deviceVal {
   border-bottom: 1px solid #666666;
   height: 50px;
+}
+
+.deviceVal:hover {
+  box-shadow: 5px 5px 10px;
 }
 
 @media all and (max-width: 750px) {
