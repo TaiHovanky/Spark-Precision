@@ -1,7 +1,13 @@
+html {
+  background-color: #F5F6F8;
+  background-size: cover;
+}
+
 .App {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  
 }
 
 #devicesLabel {
@@ -10,6 +16,7 @@
 
 .links {
   margin: 2% 4%;
+  text-align: center;
 }
 
 a {
@@ -22,7 +29,7 @@ a {
 }
 
 .App-header {
-  background-color: #224687;
+  background-color: #1878CB;
   height: 20%;
   padding: 20px;
   color: #EDEDED;
@@ -49,6 +56,7 @@ a {
   width: 40%;
   margin: 2% 4%;
   color: #666666;
+  background-color: white;
 }
 
 .variableName {
@@ -56,6 +64,10 @@ a {
   padding: 2.5%;
   background-color: #00BCD4;
   color: #EDEDED;
+}
+
+.variableName:hover {
+  cursor: pointer;
 }
 
 .valuesTable {
