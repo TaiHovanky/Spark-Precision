@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
-import VariableCard from './VariableCard'
+import Navbar from './Navbar';
+import VariableCard from './VariableCard';
 
 class Device extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class Device extends Component {
     var url = 'http://things.ubidots.com/api/v1.6/datasources/58dd763b76254263fe29d596/variables/?token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ&format=json'
     axios.get(url)
     .then(response => {
-      console.log('response variables', response);
       this.setState({
         variables: response.data.results
       })
@@ -26,16 +26,13 @@ class Device extends Component {
 
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Spark Precise Innovation</h2>
-        </div>
+        <Navbar />
         <div className='container'>
           {this.state.variables.map(variable => {
             return <VariableCard 
             variable={variable}
             key={variable.label} />
           })}
-          
         </div>
       </div>
     );

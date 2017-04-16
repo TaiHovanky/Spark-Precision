@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
-import axios from 'axios';
 import Toggle from './Toggle';
 import Graph from './Graph';
+import getValues from '../utils/variableValues';
 
 class VariableDetail extends Component{
   constructor(props) {
@@ -14,17 +14,8 @@ class VariableDetail extends Component{
   }
 
   componentDidMount() {
-    this.fetchValues();
-  }
-
-  fetchValues() {
-    let url = `http://things.ubidots.com/api/v1.6/variables/${this.props.variable.id}/values/?page_size=30&page=${this.state.page}&token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ`
-    axios.get(url)
-    .then(response => {
-      this.setState({
-        values: response.data.results
-      })
-    })
+    let context = this;
+    getValues(context.props.variable.id, context.state.page, context);
   }
 
   seeOlder() {
@@ -32,7 +23,8 @@ class VariableDetail extends Component{
     this.setState({
       page: page
     }, () => {
-      this.fetchValues();
+      let context = this;
+      getValues(context.props.variable.id, context.state.page, context);
     })
   }
 
@@ -41,7 +33,8 @@ class VariableDetail extends Component{
     this.setState({
       page: page
     }, () => {
-      this.fetchValues();
+      let context = this;
+      getValues(context.props.variable.id, context.state.page, context);
     })
   }
 

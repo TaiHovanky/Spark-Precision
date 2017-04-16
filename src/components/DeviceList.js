@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import axios from 'axios';
+import getDevices from '../utils/devices';
+import Navbar from './Navbar';
 import DeviceCard from './DeviceCard';
 
 class DeviceList extends Component {
@@ -12,23 +13,15 @@ class DeviceList extends Component {
   }
 
   componentDidMount() {
-    var url = 'http://things.ubidots.com/api/v1.6/datasources/?token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ&format=json'
-    axios.get(url)
-    .then(response => {
-      console.log('response devices', response);
-      this.setState({
-        devices: response.data.results
-      })
-    });
+    let context = this;
+    getDevices(context);
   }
 
   render() {
 
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Spark Precise Innovation</h2>
-        </div>
+        <Navbar />
         <div className='deviceList'>
           <h3 id='devicesLabel'>Devices: </h3>
           <div className='container'>

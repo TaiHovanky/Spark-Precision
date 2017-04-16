@@ -6,6 +6,8 @@
 # testing
 /coverage
 /debug.log
+/src/utils/variableValues.js
+/src/utils/devices.js
 
 # production
 /build
