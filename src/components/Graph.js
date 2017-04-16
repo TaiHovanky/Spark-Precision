@@ -7,11 +7,11 @@ class Graph extends Component{
     var times = this.props.values.map(data => {
       let dateTime = new Date(data.timestamp).toLocaleString();
       return dateTime;
-    });
+    }).reverse();
 
     var values = this.props.values.map(data => {
       return data.value;
-    })
+    }).reverse();
 
     var config = {
       xAxis: {
