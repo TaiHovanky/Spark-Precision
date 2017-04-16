@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+import Toggle from './Toggle';
 import Graph from './Graph';
 
 class VariableDetail extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      values: []
+      values: [],
+      page: 1
     }
   }
 
   componentDidMount() {
-    let url = `http://things.ubidots.com/api/v1.6/variables/${this.props.variable.id}/values/?token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ`
+    this.fetchValues();
+  }
+
+  fetchValues() {
+    let url = `http://things.ubidots.com/api/v1.6/variables/${this.props.variable.id}/values/?page_size=30&page=${this.state.page}&token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ`
     axios.get(url)
     .then(response => {
       this.setState({
@@ -21,9 +27,31 @@ class VariableDetail extends Component{
     })
   }
 
+  seeOlder() {
+    let page = this.state.page + 1
+    this.setState({
+      page: page
+    }, () => {
+      this.fetchValues();
+    })
+  }
+
+  seeNewer() {
+    let page = this.state.page - 1
+    this.setState({
+      page: page
+    }, () => {
+      this.fetchValues();
+    })
+  }
+
   render() {
     return (
       <div>
+        <Toggle 
+          seeOlder={this.seeOlder.bind(this)}
+          seeNewer={this.seeNewer.bind(this)}
+        />
         <Graph values={this.state.values} />
         <table className='valuesTable'>
           <tr><td>Time</td><td>Value</td></tr>

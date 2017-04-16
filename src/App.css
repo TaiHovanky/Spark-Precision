@@ -70,6 +70,22 @@ a {
   cursor: pointer;
 }
 
+button {
+  background-color: #FFB74D;
+  border-radius: 10%;
+  border-style: none;
+  color: white;
+  font-size: 100%;
+  margin: 5%;
+  text-align: center;
+  line-height: 100%;
+  padding: 3%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .valuesTable {
   margin-left: 15%;
   border-collapse: collapse;

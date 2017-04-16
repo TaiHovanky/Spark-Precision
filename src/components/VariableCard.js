@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import VariableDetail from './VariableDetail';
-import Toggle from './Toggle';
+
 
 class VariableCard extends Component{
   constructor(props) {
@@ -32,7 +32,6 @@ class VariableCard extends Component{
         </header>
         <p>Last Active: </p>
         <h4>{time}</h4>
-        <Toggle />
         {this.state.showDetails && <VariableDetail variable={this.props.variable} />}
       </section>
     );
