@@ -16,6 +16,7 @@ class Device extends Component {
     var url = 'http://things.ubidots.com/api/v1.6/datasources/58dd763b76254263fe29d596/variables/?token=d4WquZFogVXjiwgxrTdpqNsjGtvZZQ&format=json'
     axios.get(url)
     .then(response => {
+      console.log('response data', response.data)
       this.setState({
         variables: response.data.results
       })
