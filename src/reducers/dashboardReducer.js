@@ -10,19 +10,24 @@ const dashboardReducer = (state={}, action) => {
             console.log('values received!', action);
             return Object.assign(
                 {},
-                state,
+                state.variables,
                 {
                     ...state,
                     [action.name]: {
-                        name: action.name,
-                        unit: action.unit,
-                        last_active: action.last_activity,
-                        last_value: action.last_value,
-                        id: action.id,
                         values: action.values
                     }
                 }
-            )
+            );
+        case 'VARIABLES':
+            console.log('variables received', action);
+            return Object.assign(
+                {},
+                state,
+                {
+                    ...state,
+                    variables: action.variables
+                }
+            );
         default:
             return state;
     }

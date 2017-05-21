@@ -1,5 +1,4 @@
 import React from 'react';
-import getValues from '../utils/variableValues';
 import Graph from './Graph';
 import { getVariableValues } from '../actions/dashboardActions';
 import { connect } from 'react-redux';
@@ -13,20 +12,34 @@ class DashboardItem extends React.Component{
     }
 
     componentDidMount() {
-        let context = this;
-        // getValues(context.props.variable.id, 1, context);
         this.props.getVariableValues(this.props.variable, 1);
     }
 
     render() {
         return (
-            <div>
-                <h3>{this.props.variable.name}</h3>
-                <p>{this.props.variable.last_activity}</p>
-                <p>{this.props.variable.last_value.value} {this.props.variable.unit}</p>
-                {this.state.values.length > 0 && <Graph values={this.state.values}/>}
+            <div className='dashboardItem'>
+                <div className='dashboardItemHeading'>
+                    <h2 className='dashboardItemVariableName headerItem'>
+                        {this.props.variable.name}
+                    </h2>
+                    <p className='dashboardItemVariableLastActive headerItem'>
+                        {new Date(this.props.variable.last_active).toLocaleString()}
+                    </p>
+                    <p className='dashboardItemVariableLastValue headerItem'>
+                        Most recent value: {this.props.variable.last_value} {this.props.variable.unit}
+                    </p>
+                </div>
+                {this.props.values[this.props.variable.name] &&
+                this.props.values[this.props.variable.name].values.length > 0 &&
+                <Graph values={this.props.values[this.props.variable.name].values}/>}
             </div>
-        )
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        values: state.dashboardReducer
     }
 }
 
@@ -38,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(DashboardItem);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardItem);

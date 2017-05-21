@@ -101,6 +101,28 @@ button:hover {
   box-shadow: 5px 5px 10px;
 }
 
+.dashboardItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%; 
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.dashboardItemHeading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.5% 0;
+  background-color: #00BCD4; 
+  color: #ffffff;
+}
+
+.headerItem {
+  margin: 0 10%;
+}
+
+
 @media all and (max-width: 750px) {
   .container {
     flex-direction: column;
