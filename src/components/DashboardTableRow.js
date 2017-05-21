@@ -8,6 +8,7 @@ class DashboardTableRow extends React.Component{
     render() {
         return (
             <tr>
+                <td>{this.props.name}</td>
                 {this.props.values.map(dataPoint => {
                     
                     return <td>{dataPoint.value}</td>

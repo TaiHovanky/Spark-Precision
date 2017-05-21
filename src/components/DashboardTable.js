@@ -51,12 +51,19 @@ class DashboardTable extends React.Component{
 
     render() {
         let variablesArr = [];
+        let namesArr = [];
         let thisObj = this;
         for(let variable in this.props.variables) {
 
             if(this.props.variables[variable].values) {
                 variablesArr.push(thisObj.props.variables[variable]);
             }
+
+            
+        }
+        for(let item in this.props.variables.variables) {
+            console.log('item', this.props.variables.variables[item].name)
+            namesArr.push(this.props.variables.variables[item].name);
         }
         // console.log('array is', Array.isArray(this.state.tableRows));
         // console.log('variable', variable)
@@ -66,9 +73,11 @@ class DashboardTable extends React.Component{
             <table id='testtable'>
                 
                 <tbody>
-                {variablesArr.map(variable => {
+                {variablesArr.map((variable, index) => {
                     console.log('variable in map', variable);
-                    return <DashboardTableRow values={variable.values} />
+                    return (
+                        <DashboardTableRow values={variable.values} name={namesArr[index]} />
+                    )
                 })}
                 </tbody>
             </table>
