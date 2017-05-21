@@ -1,6 +1,8 @@
 import React from 'react';
 import getValues from '../utils/variableValues';
 import Graph from './Graph';
+import { getVariableValues } from '../actions/dashboardActions';
+import { connect } from 'react-redux';
 
 class DashboardItem extends React.Component{
     constructor(props) {
@@ -12,7 +14,8 @@ class DashboardItem extends React.Component{
 
     componentDidMount() {
         let context = this;
-        getValues(context.props.variable.id, 1, context);
+        // getValues(context.props.variable.id, 1, context);
+        this.props.getVariableValues(this.props.variable, 1);
     }
 
     render() {
@@ -27,4 +30,12 @@ class DashboardItem extends React.Component{
     }
 }
 
-export default DashboardItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getVariableValues: (id, page) => {
+            dispatch(getVariableValues(id, page));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(DashboardItem);
