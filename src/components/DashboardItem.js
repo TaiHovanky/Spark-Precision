@@ -29,9 +29,9 @@ class DashboardItem extends React.Component{
                         Most recent value: {this.props.variable.last_value} {this.props.variable.unit}
                     </p>
                 </div>
-                {this.props.values[this.props.variable.name] &&
-                this.props.values[this.props.variable.name].values.length > 0 &&
-                <Graph values={this.props.values[this.props.variable.name].values}/>}
+                {this.props.values[this.props.variable.name] && 
+                    this.props.values[this.props.variable.name].values &&
+                    <Graph values={this.props.values[this.props.variable.name].values}/>}
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import DashboardItem from './DashboardItem'
+import DashboardItem from './DashboardItem';
+// import DashboardTable from './DashboardTable';
 import { getVariables } from '../actions/dashboardActions';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
@@ -9,12 +10,19 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      variables: []
+      variables: [],
+      showTable: false
     }
   }
 
   componentDidMount() {
     this.props.getVariables();
+    // let thisObj = this
+    // setTimeout(function() {
+    //   thisObj.setState({
+    //     showTable: true
+    //   }, 5000)
+    // })
   }
 
   render() {
@@ -24,9 +32,11 @@ class Dashboard extends Component {
         {this.props.variables && 
           Object.keys(this.props.variables).length > 0 &&
           Object.keys(this.props.variables).map(variable => {
-            return <DashboardItem variable={this.props.variables[variable]} />
+              return <DashboardItem variable={this.props.variables[variable]} />
           })
         }
+        <div>
+        </div>
       </div>
     );
   }
