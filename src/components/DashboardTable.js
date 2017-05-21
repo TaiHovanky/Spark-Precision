@@ -1,41 +1,76 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import DashboardTableRow from './DashboardTableRow'
 
 class DashboardTable extends React.Component{
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         tableRows: []
+    //     }
+    // }
+
+    // componentDidMount() {
+        // let tableRows = [];
+        // let thisObj = this;
+        // for(let variable in this.props.variables) {
+
+        //     if(this.props.variables[variable].values) {
+                
+        //         //below this is old version
+        //     //     let row = document.createElement('tr');
+        //     //     let rowHeading = document.createElement('td');
+        //     //     let rowName = document.createTextNode(variable);
+        //     //     rowHeading.appendChild(rowName);
+        //     //     row.appendChild(rowHeading);
+        //     //     // console.log('row', row);
+        //     //     if(thisObj.props.variables[variable].values) {
+        //     //         thisObj.props.variables[variable].values.forEach(value => {
+        //     //             // console.log('currval', value);
+        //     //             let dataPoint = document.createElement('td');
+        //     //             let dataValue = document.createTextNode(value.value);
+        //     //             dataPoint.appendChild(dataValue);
+        //     //             // console.log('dataval', dataPoint)
+        //     //             row.appendChild(dataPoint);
+                    
+        //     //         });
+
+        //     //     }
+        //     //     tableRows.push(row);
+
+        //     } 
+        //     // console.log('tablerows', tableRows)
+        // }
+        // this.setState({
+        //     tableRows: tableRows
+        // }, () => {
+        //     console.log('tablerows', this.state.tableRows)
+        // })
+    // }
+        // let tableRows = [];
+
     render() {
-        let tableRows = [];
+        let variablesArr = [];
         let thisObj = this;
         for(let variable in this.props.variables) {
+
             if(this.props.variables[variable].values) {
-                let row = document.createElement('tr');
-                let rowHeading = document.createElement('td');
-                let rowName = document.createTextNode(variable);
-                rowHeading.appendChild(rowName);
-                row.appendChild(rowHeading);
-                // console.log('row', row);
-                if(thisObj.props.variables[variable].values) {
-                    thisObj.props.variables[variable].values.forEach(value => {
-                        // console.log('currval', value);
-                        let dataPoint = document.createElement('td');
-                        let dataValue = document.createTextNode(value.value);
-                        dataPoint.appendChild(dataValue);
-                        // console.log('dataval', dataPoint)
-                        row.appendChild(dataPoint);
-                    
-                    });
-
-                }
-                tableRows.push(row);
-
-            } 
-            // console.log('tablerows', tableRows)
+                variablesArr.push(thisObj.props.variables[variable]);
+            }
         }
-        console.log('tablerows', tableRows)
+        // console.log('array is', Array.isArray(this.state.tableRows));
+        // console.log('variable', variable)
+        //             return <tr>{JSON.stringify(variable.values)}</tr>})}
+        // console.log('somethign', variablesArr)
         return (
-            <table>
-                {tableRows.length > 0 && tableRows.map(row => {
-                    return row;
+            <table id='testtable'>
+                
+                <tbody>
+                {variablesArr.map(variable => {
+                    console.log('variable in map', variable);
+                    return <DashboardTableRow values={variable.values} />
                 })}
+                </tbody>
             </table>
         );
     }
